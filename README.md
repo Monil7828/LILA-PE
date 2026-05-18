@@ -2,6 +2,9 @@
 
 A browser-based visualization tool for exploring LILA BLACK player telemetry on top of the supplied minimaps. It is built for level designers who need to see movement paths, combat locations, loot concentration, storm deaths, and match playback without opening data tools.
 
+## Live Demo
+
+Deployment URL: https://lila-games-pe.netlify.app/
 ## What It Does
 
 - Plots human and bot journeys on the correct minimap using the provided world-to-minimap transform.
@@ -46,23 +49,6 @@ The raw telemetry lives in the `February_10` through `February_14` folders. Each
 
 The preprocessing script decodes event bytes, detects bots from numeric `user_id` values, groups rows by match, converts timestamps to match-relative offsets, and writes one compact JSON payload at `data/dataset.json`.
 
-## Deploy
-
-Use the repo root as the static site root. Since `data/dataset.json` is committed, no build command is required for a basic deployment.
-
-For Netlify, drag/drop or connect the repo with:
-
-```text
-Build command: none
-Publish directory: .
-```
-
-For Vercel, import as an "Other" static project:
-
-```text
-Build command: none
-Output directory: .
-```
 
 ## Notes
 
