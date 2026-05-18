@@ -1,0 +1,10 @@
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+.venv-*/
+.venv-data/
+.codex_deps/
+.pytest_cache/
+.chrome-profile*/
+artifacts/

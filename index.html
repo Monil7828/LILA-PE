@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LILA BLACK Player Journey Explorer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="control-panel" aria-label="Explorer controls">
+        <header class="brand-block">
+          <p class="eyebrow">LILA BLACK</p>
+          <h1>Player Journey Explorer</h1>
+        </header>
+
+        <section class="control-section">
+          <label for="mapSelect">Map</label>
+          <select id="mapSelect"></select>
+        </section>
+
+        <section class="control-section">
+          <label for="dateSelect">Date</label>
+          <select id="dateSelect"></select>
+        </section>
+
+        <section class="control-section">
+          <label for="matchSelect">Match</label>
+          <select id="matchSelect"></select>
+        </section>
+
+        <section class="control-section">
+          <span class="section-label">Heatmap</span>
+          <div class="segmented" role="group" aria-label="Heatmap mode">
+            <button type="button" class="segment is-active" data-heatmap="traffic">Traffic</button>
+            <button type="button" class="segment" data-heatmap="kills">Kills</button>
+            <button type="button" class="segment" data-heatmap="deaths">Deaths</button>
+            <button type="button" class="segment" data-heatmap="loot">Loot</button>
+          </div>
+        </section>
+
+        <section class="control-section toggle-grid">
+          <label class="toggle">
+            <input id="humanToggle" type="checkbox" checked />
+            <span>Humans</span>
+          </label>
+          <label class="toggle">
+            <input id="botToggle" type="checkbox" checked />
+            <span>Bots</span>
+          </label>
+          <label class="toggle">
+            <input id="markerToggle" type="checkbox" checked />
+            <span>Events</span>
+          </label>
+        </section>
+
+        <section class="control-section playback-section">
+          <div class="playback-row">
+            <button id="playButton" class="primary-action" type="button" aria-label="Play match">Play</button>
+            <select id="speedSelect" aria-label="Playback speed">
+              <option value="0.5">0.5x</option>
+              <option value="1" selected>1x</option>
+              <option value="2">2x</option>
+              <option value="4">4x</option>
+            </select>
+          </div>
+          <input id="timeSlider" type="range" min="0" max="1000" value="1000" />
+          <div class="timeline-meta">
+            <span id="timeLabel">t+0</span>
+            <span id="durationLabel">duration 0</span>
+          </div>
+        </section>
+
+        <section class="stats-grid" aria-label="Match statistics">
+          <div class="stat-tile">
+            <span>Humans</span>
+            <strong id="humanCount">0</strong>
+          </div>
+          <div class="stat-tile">
+            <span>Bots</span>
+            <strong id="botCount">0</strong>
+          </div>
+          <div class="stat-tile">
+            <span>Loot</span>
+            <strong id="lootCount">0</strong>
+          </div>
+          <div class="stat-tile">
+            <span>Combat</span>
+            <strong id="combatCount">0</strong>
+          </div>
+        </section>
+      </aside>
+
+      <section class="workspace">
+        <header class="workspace-header">
+          <div>
+            <p id="activeContext" class="eyebrow">Loading telemetry</p>
+            <h2 id="matchTitle">Preparing map</h2>
+          </div>
+          <div id="summaryStrip" class="summary-strip"></div>
+        </header>
+
+        <div class="map-stage">
+          <div class="map-frame" id="mapFrame">
+            <img id="minimap" alt="Selected minimap" />
+            <canvas id="heatCanvas" width="1024" height="1024" aria-hidden="true"></canvas>
+            <canvas id="pathCanvas" width="1024" height="1024" aria-label="Player journeys"></canvas>
+          </div>
+        </div>
+
+        <footer class="inspector">
+          <section>
+            <h3>Event Feed</h3>
+            <ol id="eventFeed" class="event-feed"></ol>
+          </section>
+          <section>
+            <h3>Legend</h3>
+            <div class="legend">
+              <span><i class="swatch human-line"></i>Human path</span>
+              <span><i class="swatch bot-line"></i>Bot path</span>
+              <span><i class="marker kill"></i>Kill</span>
+              <span><i class="marker death"></i>Death</span>
+              <span><i class="marker storm"></i>Storm</span>
+              <span><i class="marker loot"></i>Loot</span>
+            </div>
+          </section>
+        </footer>
+      </section>
+    </main>
+
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
