@@ -2,10 +2,6 @@
 
 A browser-based visualization tool for exploring LILA BLACK player telemetry on top of the supplied minimaps. It is built for level designers who need to see movement paths, combat locations, loot concentration, storm deaths, and match playback without opening data tools.
 
-## Live Demo
-
-Deployment URL: add the hosted URL here after publishing the repo to Vercel, Netlify, or any static host.
-
 ## What It Does
 
 - Plots human and bot journeys on the correct minimap using the provided world-to-minimap transform.
